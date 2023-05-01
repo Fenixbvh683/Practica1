@@ -1,0 +1,55 @@
+<h1 class="m-5">Iniciar Sesión</h1>
+<form [formGroup]="form" class="m-5" (ngSubmit)="onEnviar($event)">
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Email</label>
+      <input type="email" formControlName="email" 
+      [ngClass]="{'is-invalid': Email?.error && Email?.touched, 'is-valid': !Email?.error && Email?.touched}"
+      class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+      
+      <div *ngIf="Email?.error && Email?.touched">
+
+        <p *ngIf="Email?.hasError('required')"  class="text-danger">
+
+            El email es requerido.
+
+        </p>
+
+        <p *ngIf="Eamil?.hasError('email')" class="text-danger">
+
+            El formato del email debe ser válido.
+
+        </p>
+
+      </div>
+
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Contraseña</label>
+      <input type="password" formControlName="password" 
+      
+      [ngClass]="{'is-invalid': Password?.error && Password?.touched, 'is-valid': !Password?.error && Password?.touched}"
+
+      class="form-control" id="exampleInputPassword1">
+    
+
+
+      <div *ngIf="Password?.error && Password?.touched">
+
+        <p *ngIf="Password?.hasError('required')"  class="text-danger">
+
+            La contraseña es requerido.
+
+        </p>
+
+        <p *ngIf="Password?.hasError('password')" class="text-danger">
+
+            La contraseña debe ser de 8 o mas caracteres.
+
+        </p>
+
+      </div>
+    
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Enviar</button>
+  </form>
